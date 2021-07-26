@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Inscription') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -147,22 +147,24 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="type" class="col-md-4 col-form-label text-md-right">Type de profile</label>
+                            <label for="profile_id" class="col-md-4 col-form-label text-md-right">Type de profile</label>
 
                             <div class="col-md-6">
-                                {{-- <input id="type" type="text" class="form-control @error('type') is-invalid @enderror" name="type" value="{{ old('type') }}" required autocomplete="type" > --}}
-                                <div class="input-group mb-3 " name="type">
+
+                                <div class="input-group mb-3 " name="profile_id">
                                     <div class="input-group-prepend">
-                                      <label class="input-group-text" for="inputGroupSelect01">Type</label>
+                                      <label class="input-group-text" for="inputGroupSelect01">type</label>
                                     </div>
-                                    <select class="custom-select" name="type" id="type">
+                                    <select class="custom-select" name="profil_id" id="profile_id">
                                       <option selected>Choose...</option>
-                                      <option value="demande">demandeur d'emploi</option>
-                                      <option value="offre">ofrreur d'emploi</option>
+                                      @foreach ($profiles as $profil)
+                                        <option value="{{$profil->id}}">{{$profil->display_name}}</option>
+                                      @endforeach
+                                      
                                     </select>
                                 </div>
 
-                                @error('type')
+                                @error('profile_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

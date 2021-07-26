@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\TypeValidationRule;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,7 +61,7 @@ class RegisterController extends Controller
             'pays' => 'required',
             'ville' => 'required',
             'rue' => 'required',
-            'type' => 'required',
+            'profil_id' => ['required', new TypeValidationRule],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -85,7 +86,7 @@ class RegisterController extends Controller
             'pays' => $data['pays'],
             'ville' => $data['ville'],
             'rue' => $data['rue'],
-            'type' => $data['type'],
+            'profil_id' => $data['profil_id'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);

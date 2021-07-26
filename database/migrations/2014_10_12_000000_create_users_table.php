@@ -25,7 +25,9 @@ class CreateUsersTable extends Migration
             $table->string('pays')->nullable();
             $table->string('ville')->nullable();
             $table->string('rue')->nullable();
-            $table->string('type')->nullable();
+            $table->unsignedBigInteger('profil_id')->default(1);
+            $table->foreign('profil_id')->references('id')->on('users');
+
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
