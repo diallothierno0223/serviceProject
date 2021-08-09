@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App\Models\Profil;
+use App\Models\Offre;
+use App\Models\Demande;
+use App\Models\Abonnement;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,5 +43,25 @@ class User extends \TCG\Voyager\Models\User
 
     public function profil(){
         return $this->belongsTo(Profil::class);
+    }
+
+    public function offres(){
+        return $this->hasMany(Offre::class);
+    }
+
+    public function demandes(){
+        return $this->hasMany(Demande::class);
+    }
+
+    public function abonnements(){
+        return $this->hasMany(Abonnement::class);
+    }
+
+    public function demande_postuler(){
+        return $this->belongsToMany(Demande::class, "postuler_demandes");
+    }
+
+    public function offre_postuler(){
+        return $this->belongsToMany(Offre::class, "postuler_offres");
     }
 }
