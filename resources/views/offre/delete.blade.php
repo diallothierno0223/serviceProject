@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section("content")
     <h1>vous allez supprimer le post {{$offre->description}}</h1>

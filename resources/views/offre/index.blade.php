@@ -1,8 +1,8 @@
-@extends("layouts.app")
+@extends("layouts.master")
 
 
 @section("content")
-<a href="{{route('offre.create')}}" class="btn btn-primary">creer un article</a>
+<a href="{{route('offre.create')}}" class="btn btn-primary">creer un article</a><br>
 <table class="table">
     <tr>
         <td>id</td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\User;
 use App\Models\Offre;
 use App\Rules\JobRule;
 use Illuminate\Http\Request;
@@ -48,22 +49,9 @@ class OffreController extends Controller
             "salaire" => ["required"],
             "type_salaire" => ["required"],
             "heure_de_travail_par_jours" => ["required"],
-            "status" => ["required"]
         ]);
-
-        $offre = new Offre();
-        $offre->user_id = auth()->user()->id;
-        $offre->job_id = $data["job_id"];
-        $offre->langue = $data["langue"];
-        $offre->lieu_cible = $data["lieu_cible"];
-        $offre->sexe = $data["sexe"];
-        $offre->description = $data["description"];
-        $offre->salaire = $data["salaire"];
-        $offre->type_salaire = $data["type_salaire"];
-        $offre->heure_de_travail_par_jours = $data["heure_de_travail_par_jours"];
-        $offre->status = $data["status"];
-
-        $offre->save();
+        $user = User::findOrFail(auth()->user()->id);
+        $offre = $user->offres()->create($data);
 
         return redirect()->route("offre.index")->with("success", "Offre creer avec succes");
     }
