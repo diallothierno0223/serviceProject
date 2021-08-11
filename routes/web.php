@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModifieProfileController;
+use App\Http\Controllers\OffreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use App\Http\Controllers\ModifieProfileController;
 */
 
 Route::get('/', function () {
-    // return view('home.index');
-    dd(auth()->user()->profil
-    ->name);
+    return view('home.index');
 });
 
 
@@ -30,8 +29,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//route pour modifier le profile (info, password, avatar, et affiche profile)
 Route::get('profile/show', [ModifieProfileController::class, 'show'])->middleware('auth')->name('profile.show');
 Route::get('profile/edit', [ModifieProfileController::class,'index'])->middleware('auth')->name('profile.index');
 Route::post('profile/update', [ModifieProfileController::class,'update'])->middleware('auth')->name('profile.update');
 Route::post('profile/update/avatar', [ModifieProfileController::class, 'avatar'])->middleware('auth')->name('profile.update.avatar');
 Route::post('profile/update/possword', [ModifieProfileController::class, 'password'])->middleware('auth')->name('profile.update.password');
+
+//route pour offre 
+Route::resource('offre', OffreController::class)->middleware('auth');
+Route::get('offre/{offre}/supprime', [OffreController::class, 'supprime'])->middleware('auth')->name('offre.supprime');

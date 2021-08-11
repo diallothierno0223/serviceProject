@@ -10,6 +10,8 @@ class Offre extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function user(){
         return $this->belongsTo(User::class);
     }
@@ -19,6 +21,6 @@ class Offre extends Model
     }
 
     public function user_postuler(){
-        return $this->belongsToMany(User::class, "postuler_offres")
+        return $this->belongsToMany(User::class, "postuler_offres");
     }
 }
