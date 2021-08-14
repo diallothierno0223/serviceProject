@@ -3,11 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModifieProfileController;
-<<<<<<< HEAD
 use App\Http\Controllers\OffreController;
-=======
 use App\Http\Controllers\DemandeController;
->>>>>>> 613af7eeae01eba1f11c42117aa1b51a6da1b7f7
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +18,7 @@ use App\Http\Controllers\DemandeController;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
     return view('home.index');
-=======
- return view('home.index');
-   
->>>>>>> 613af7eeae01eba1f11c42117aa1b51a6da1b7f7
 });
 
 
@@ -45,13 +37,9 @@ Route::post('profile/update', [ModifieProfileController::class,'update'])->middl
 Route::post('profile/update/avatar', [ModifieProfileController::class, 'avatar'])->middleware('auth')->name('profile.update.avatar');
 Route::post('profile/update/possword', [ModifieProfileController::class, 'password'])->middleware('auth')->name('profile.update.password');
 
-<<<<<<< HEAD
 //route pour offre 
 Route::resource('offre', OffreController::class)->middleware('auth');
 Route::get('offre/{offre}/supprime', [OffreController::class, 'supprime'])->middleware('auth')->name('offre.supprime');
-=======
 
 //url demande
-
 Route::resource('/demandes', DemandeController::class)->middleware('auth');
->>>>>>> 613af7eeae01eba1f11c42117aa1b51a6da1b7f7
