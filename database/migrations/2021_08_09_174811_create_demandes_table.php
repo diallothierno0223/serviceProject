@@ -30,7 +30,7 @@ class CreateDemandesTable extends Migration
             $table->string("salaire");
             $table->string("type_salaire");
             $table->string("heure_de_travail_par_jours");
-            $table->string("status");
+            $table->string("status")->default('disponible');
 
             $table->timestamps();
         });
