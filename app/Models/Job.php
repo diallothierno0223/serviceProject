@@ -2,12 +2,13 @@
 
 namespace App\Models;
 use App\Models\Offre;
-use App\Models\Demande
+use App\Models\Demande;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 
     public function offres(){

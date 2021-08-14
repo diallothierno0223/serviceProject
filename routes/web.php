@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModifieProfileController;
+use App\Http\Controllers\DemandeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,8 @@ use App\Http\Controllers\ModifieProfileController;
 */
 
 Route::get('/', function () {
-    // return view('home.index');
-    dd(auth()->user()->profil
-    ->name);
+ return view('home.index');
+   
 });
 
 
@@ -35,3 +35,8 @@ Route::get('profile/edit', [ModifieProfileController::class,'index'])->middlewar
 Route::post('profile/update', [ModifieProfileController::class,'update'])->middleware('auth')->name('profile.update');
 Route::post('profile/update/avatar', [ModifieProfileController::class, 'avatar'])->middleware('auth')->name('profile.update.avatar');
 Route::post('profile/update/possword', [ModifieProfileController::class, 'password'])->middleware('auth')->name('profile.update.password');
+
+
+//url demande
+
+Route::resource('/demandes', DemandeController::class)->middleware('auth');

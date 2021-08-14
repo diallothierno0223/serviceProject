@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Job
+use App\Models\Job;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Demande extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 
     public function user(){
@@ -20,6 +21,6 @@ class Demande extends Model
     }
 
     public function user_postuler(){
-        return $this->belongsToMany(User::class, "postuler_demandes")
+        return $this->belongsToMany(User::class, "postuler_demandes");
     }
 }
