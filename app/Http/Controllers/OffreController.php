@@ -64,7 +64,9 @@ class OffreController extends Controller
      */
     public function show(Offre $offre)
     {
-        return view('offre.show', ["offre" => $offre]);
+        $demande = $offre->user_postuler;
+        // dd($demande);
+        return view('offre.show', ["offre" => $offre, "demande" => $demande]);
     }
 
     /**

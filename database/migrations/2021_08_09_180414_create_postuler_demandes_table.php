@@ -23,7 +23,7 @@ class CreatePostulerDemandesTable extends Migration
             $table->unsignedBigInteger("demande_id");
             $table->foreign("demande_id")->references("id")->on("demandes");
 
-            $table->string("status");
+            $table->string("status")->default("indefini");
 
             $table->timestamps();
         });

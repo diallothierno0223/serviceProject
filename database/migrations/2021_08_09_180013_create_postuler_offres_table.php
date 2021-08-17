@@ -20,9 +20,9 @@ class CreatePostulerOffresTable extends Migration
             $table->foreign("user_id")->references("id")->on("users");
 
             $table->unsignedBigInteger("offre_id");
-            $table->foreign("offre_id")->references("id")->on("users");
+            $table->foreign("offre_id")->references("id")->on("offres");
 
-            $table->string("status");
+            $table->string("status")->default('indefini');
 
             $table->timestamps();
         });
