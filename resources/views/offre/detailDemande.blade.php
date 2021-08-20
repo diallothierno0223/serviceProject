@@ -29,7 +29,7 @@
             <p class="text-danger">vous avez deja postuler</p>
             <form method="post" action="{{route("offre.SupprimerPostulerDemande", [ "demande" => $demande->id])}}">
                 @csrf
-                <button type="submit" class="btn btn-danger btn-lg">supprimer la demande d'emploi</button>
+                <button type="submit" class="btn btn-danger btn-lg">supprimer l'offre d'emploi</button>
             </form>
         @endif
     </div>

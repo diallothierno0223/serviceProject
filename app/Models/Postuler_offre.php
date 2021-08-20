@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Postuler_offre extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

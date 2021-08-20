@@ -81,7 +81,7 @@
         <hr>
         <h1>personne qui on postuler a votre demande d'emploi</h1>
         @foreach ($demande->user_postuler as $postuler)
-            <p>{{$postuler->name}} a postuler a cette offre <a href="{{ route("demande.showProfilePostuler", ["user" => $postuler->pivot->user_id, "demande" => $postuler->pivot->demande_id])}}">cliquée ici pour voir le profile</a></p>
+            <p>{{$postuler->name}} a postuler a cette demande <a href="{{ route("demande.showProfilePostuler", ["user" => $postuler->pivot->user_id, "demande" => $postuler->pivot->demande_id])}}">cliquée ici pour voir le profile</a></p>
         @endforeach
     </div>
 @endsection

@@ -59,7 +59,21 @@ Route::post("offres/demande/{demande}", [PostulerDemandeController::class, "post
 Route::post("offres/demande/{demande}/supprime", [PostulerDemandeController::class, "supprimer"])->name("offre.SupprimerPostulerDemande")->middleware("auth");
 
 //voir profile des user qui recrute(postuler offre)
-Route::get("offre/demande/profilPostule/{user}/{demande}", [PostulerOffreController::class, "profilePostuler"])->name("demande.showProfilePostuler")->middleware("auth");
+Route::get("demande/profilPostule/{user}/{demande}", [PostulerDemandeController::class, "profilePostuler"])->name("demande.showProfilePostuler")->middleware("auth");
 
 //voir profile des user qui postule(postuler demande)
-Route::get("demande/offre/profilPostule/{user}/{offre}", [PostulerDemandeController::class, "profilePostuler"])->name("offre.showProfilePostuler")->middleware("auth");
+Route::get("offre/profilPostule/{user}/{offre}", [PostulerOffreController::class, "profilePostuler"])->name("offre.showProfilePostuler")->middleware("auth");
+
+//accepte demande postule
+Route::get("demande/accept/{user}/{demande}", [PostulerDemandeController::class, "acceptPostuleDemande"])->name("demande.acceptPostuleDemande")->middleware('auth');
+
+//refuser demande postule
+Route::get("demande/refusez/{user}/{demande}", [PostulerDemandeController::class, "refuserPostuleDemande"])->name("demande.refuserPostuleDemande")->middleware('auth');
+
+//accepte offre postule
+Route::get("offre/accept/{user}/{offre}", [PostulerOffreController::class, "acceptPostuleOffre"])->name("offre.acceptPostuleOffre")->middleware('auth');
+
+//refuser offre postule
+Route::get("offre/refusez/{user}/{offre}", [PostulerOffreController::class, "refuserPostuleOffre"])->name("offre.refuserPostuleOffre")->middleware('auth');
+
+
