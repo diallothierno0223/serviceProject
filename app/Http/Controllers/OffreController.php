@@ -38,8 +38,14 @@ class OffreController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    function store(Request $request)
     {
+
+        $authed_user = auth()->user();
+        $amount = 100000;
+
+       
+
         $data = $request->validate([
             "job_id" => ["required", new JobRule()],
             "langue" => ["required"],
@@ -51,6 +57,18 @@ class OffreController extends Controller
             "heure_de_travail_par_jours" => ["required"],
         ]);
         $user = User::findOrFail(auth()->user()->id);
+
+        if($request->payment_method){
+            $authed_user->charge($amount, $request->payment_method);
+        }
+        else{
+
+            return redirect()->back()->with("error", "carte non valide");
+        }
+
+           
+        
+
         $offre = $user->offres()->create($data);
 
         return redirect()->route("offre.index")->with("success", "Offre creer avec succes");

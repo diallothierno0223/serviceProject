@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ModifieProfileController;
 use App\Http\Controllers\OffreController;
 use App\Http\Controllers\DemandeController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,3 +44,5 @@ Route::get('offre/{offre}/supprime', [OffreController::class, 'supprime'])->midd
 
 //url demande
 Route::resource('/demandes', DemandeController::class)->middleware('auth');
+
+

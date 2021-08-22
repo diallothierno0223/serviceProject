@@ -1,10 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
-    <div class="container">
+    <div class="container"> <br> <br>
+        <div>
+            @if(Session::has("error"))
+                <div class="alert alert-danger">{{Session::get("error")}}</div>
+            @endif
+        </div>
         <h1>creer une offre</h1>
         <hr>
-        <form class="" action="{{route('offre.store')}}" method="post">
+        <form class="" action="{{route('offre.store')}}" id="form" method="post">
             @csrf
             <div class="form-group">
                 <label for="job_id">job</label>
@@ -88,8 +93,44 @@
                         <p>{{$message}}</p>
                     </div>
                 @enderror
+
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">poster </button>
+
+            <div class="form-group">
+            <input type="hidden" name="payment_method" id="payment_method" />
+                <!-- Stripe Elements Placeholder -->
+                <div id="card-element"></div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" id="submit-button">poster </button>
         </form><br>
     </div>
+
+    @section('extra-js')
+        <script src="https://js.stripe.com/v3/"></script>
+        <script>
+            const stripe = Stripe(" {{ env('STRIPE_KEY') }} ");
+            const elements = stripe.elements();
+            const cardElement = elements.create('card', {
+                classes: {
+                    base: 'StripeElement bg-white w-1/2 p-2 my-2 rounded-lg'
+                }
+            });
+            cardElement.mount('#card-element');
+            const cardButton = document.getElementById('submit-button');
+            cardButton.addEventListener('click', async(e) => {
+                e.preventDefault();
+                const { paymentMethod, error } = await stripe.createPaymentMethod(
+                    'card', cardElement
+                );
+                if (error) {
+                    alert(error)
+                } else {
+                    document.getElementById('payment_method').value = paymentMethod.id;
+                }
+                document.getElementById('form').submit();
+            });
+        </script>
+    @endsection
+
 @endsection

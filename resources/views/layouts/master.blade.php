@@ -258,5 +258,6 @@
 			visibleItems: 4
 		});
 	</script>
+	@yield('extra-js')
 </body>
 </html>
