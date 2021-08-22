@@ -15,4 +15,11 @@
     <hr>
     <a href="{{route('offre.edit', ['offre' => $offre->id])}}" class="btn btn-info btn-lg">Modifier</a>
     <a href="{{route('offre.supprime', ['offre' => $offre->id])}}" class="btn btn-danger btn-lg">Supprimer</a>
+    <div class="container">
+        <hr>
+        <h1>personne qui on postuler a votre offre d'emploi</h1>
+        @foreach ($offre->user_postuler as $postuler)
+            <p>{{$postuler->name}} a postuler a cette offre <a href="{{ route("offre.showProfilePostuler", ["user" => $postuler->pivot->user_id, "offre" => $postuler->pivot->offre_id])}}">cliquée ici pour voir le profile</a></p>
+        @endforeach
+    </div>
 @endsection

@@ -8,6 +8,7 @@ use User;
 
 class Profil extends Model
 {
+    protected $guarded = [];
     use HasFactory;
 
     public function users(){

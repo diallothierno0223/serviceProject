@@ -10,7 +10,7 @@ class ModifieProfileController extends Controller
 {
     public function index(){
         // $user = User::findOrFail(auth()->user()->id);
-        return view('updateProfile');
+        return view('profile.updateProfile');
     }
 
     public function update(){
@@ -57,6 +57,6 @@ class ModifieProfileController extends Controller
     }
 
     public function show(){
-        return view('showProfile');
+        return view('profile.showProfile');
     }
 }
