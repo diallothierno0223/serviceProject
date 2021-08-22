@@ -20,7 +20,7 @@ class ProfilSeeder extends Seeder
         ]);
 
         Profil::create([
-            "name" => "damande",
+            "name" => "demande",
             "display_name" => "demandeur d'emplois"
         ]);
     }
