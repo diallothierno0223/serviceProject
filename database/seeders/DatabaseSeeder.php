@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Demande;
 use App\Models\Offre;
+use App\Models\Profil;
 use Database\Seeders\JobSeeder;
 use Illuminate\Database\Seeder;
 use Database\Seeders\ProfilSeeder;
@@ -19,7 +20,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(ProfilSeeder::class);
+        if(Profil::all()->count() < 2){
+            $this->call(ProfilSeeder::class);
+        }
         $this->call(JobSeeder::class);
         User::factory(10)->has(Demande::factory()->count(10))->create();
         User::factory(10)->has(Offre::factory()->count(10))->create();
