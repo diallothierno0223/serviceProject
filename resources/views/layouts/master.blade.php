@@ -64,6 +64,34 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
+						@auth
+							
+						<li class="nav-item dropdown">
+							@if (auth()->user()->unreadNotifications->count() > 0)
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"> <i class="fa fa-bell"></i> <span class="badge badge-pill badge-light">{{auth()->user()->unreadNotifications->count()}}</span></a>
+								<div class="dropdown-menu" aria-labelledby="dropdown-a">
+									@foreach (auth()->user()->unreadNotifications as $item)
+										@if (auth()->user()->profil->name == 'demande')
+											@if ($item->type == "App\Notifications\UserPostuleDemandeResponseNotification")
+												<a href="{{route('readNotification', ["id" => $item->id, "user" => $item->notifiable_id])}}" class="dropdown-item text-left text-justify {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre demande d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
+											@else
+												<a href="{{route('readNotificationPost', ["id" => $item->id, "user" => $item->notifiable_id])}}" class="text-justify dropdown-item ">{{$item->data['user_postule_name']}} a postuler a votre demande d'emploi N°{{$item->data['demande_id']}}</a>
+											@endif
+										@endif
+										@if (auth()->user()->profil->name == 'offre')
+											@if ($item->type == "App\Notifications\UserPostuleOffreResponseNotification")
+												<a href="{{route('readNotification', ["id" => $item->id, "user" => $item->notifiable_id])}}" class="dropdown-item text-justify {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre offre d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
+											@else
+												<a href="{{route('readNotificationPost', ["id" => $item->id, "user" => $item->notifiable_id])}}" class="text-justify dropdown-item ">{{$item->data['user_postule_name']}} a postuler a votre offre d'emploi N°{{$item->data['offre_id']}}</a>
+											@endif
+										@endif
+									@endforeach
+
+								</div>
+							</li>
+							@endif
+
+						@endauth
 						<li class="nav-item {{Route::is('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{ route('welcome') }}">Home</a></li>
 						@guest
 							<li class="nav-item {{Route::is('home.listOffre') ? 'active' : '' }}"><a class="nav-link " href="{{ route('home.listOffre') }}">Offres</a></li>
@@ -135,30 +163,6 @@
 								</div>
 							</li>
 
-							<li class="nav-item dropdown">
-							@if (auth()->user()->unreadNotifications->count() > 0)
-								<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Notifications <span class="badge badge-pill badge-light">{{auth()->user()->unreadNotifications->count()}}</span></a>
-								<div class="dropdown-menu" aria-labelledby="dropdown-a">
-									@foreach (auth()->user()->unreadNotifications as $item)
-										@if (auth()->user()->profil->name == 'demande')
-											@if ($item->type == "App\Notifications\UserPostuleDemandeResponseNotification")
-												<a href="#" class="dropdown-item {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre demande d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
-											@else
-												<a href="{{ route('demande.showProfilePostuler', [ "user" => $item->data['user_postule_id'], "demande" => $item->data['demande_id']])}}" class="dropdown-item ">{{$item->data['user_postule_name']}} a postuler a votre demande d'emploi N°{{$item->data['demande_id']}}</a>
-											@endif
-										@endif
-										@if (auth()->user()->profil->name == 'offre')
-											@if ($item->type == "App\Notifications\UserPostuleOffreResponseNotification")
-												<a href="#" class="dropdown-item {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre offre d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
-											@else
-												<a href="{{ route('offre.showProfilePostuler', [ "user" => $item->data['user_postule_id'], "offre" => $item->data['offre_id']])}}" class="dropdown-item ">{{$item->data['user_postule_name']}} a  votre offre d'emploi N°{{$item->data['offre_id']}}</a>
-											@endif
-										@endif
-									@endforeach
-
-								</div>
-							</li>
-							@endif
 
 						@endauth
 					</ul>

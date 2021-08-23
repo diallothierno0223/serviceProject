@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Offre;
 use App\Models\Demande;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -44,5 +46,30 @@ class HomeController extends Controller
 
     public function contact(){
         return view('home.contact');
+    }
+
+    public function readNotification($id, User $user){
+        foreach($user->notifications as $item){
+            if($item->id == $id){
+                $item->markAsRead();
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function readNotificationPost($id, User $user){
+        foreach($user->notifications as $item){
+            if($item->id == $id){
+                $item->markAsRead();
+                if($user->profil->name == 'demande'){
+                    return redirect()->route('demande.showProfilePostuler', ["user" => $item->data['user_postule_id'], "demande" => $item->data['demande_id']]);
+                }
+                if($user->profil->name == 'offre'){
+                    return redirect()->route('offre.showProfilePostuler', ["user" => $item->data['user_postule_id'], "offre" => $item->data['offre_id']]);
+                }
+            }
+        }
+
     }
 }
