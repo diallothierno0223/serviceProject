@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>QuickCloud - Hosting Responsive HTML5 Template</title>  
+    <title>site service</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -40,83 +40,6 @@
 </head>
 <body class="host_version"> 
 
-	<!-- Modal -->
-	<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-		<div class="modal-content">
-			<div class="modal-header tit-up">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<h4 class="modal-title">Customer Login</h4>
-			</div>
-			<div class="modal-body customer-box">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs">
-					<li><a class="active" href="#Login" data-toggle="tab">Login</a></li>
-					<li><a href="#Registration" data-toggle="tab">Registration</a></li>
-				</ul>
-				<!-- Tab panes -->
-				<div class="tab-content">
-					<div class="tab-pane active" id="Login">
-						<form role="form" class="form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="email1" placeholder="Name" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="exampleInputPassword1" placeholder="Email" type="email">
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-sm-10">
-									<button type="submit" class="btn btn-light btn-radius btn-brd grd1">
-										Submit
-									</button>
-									<a class="for-pwd" href="javascript:;">Forgot your password?</a>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="tab-pane" id="Registration">
-						<form role="form" class="form-horizontal">
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" placeholder="Name" type="text">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="email" placeholder="Email" type="email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="mobile" placeholder="Mobile" type="email">
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<input class="form-control" id="password" placeholder="Password" type="password">
-								</div>
-							</div>
-							<div class="row">							
-								<div class="col-sm-10">
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
-										Save &amp; Continue
-									</button>
-									<button type="button" class="btn btn-light btn-radius btn-brd grd1">
-										Cancel</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	  </div>
-	</div>
-
     <!-- LOADER -->
 	<div id="preloader">
 		<div class="loader-container">
@@ -141,26 +64,105 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-host">
 					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-						<li class="nav-item"><a class="nav-link" href="features.html">Features </a></li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Hosting </a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="hosting.html">Web Hosting </a>
-								<a class="dropdown-item" href="hosting.html">WordPress Hosting </a>
-								<a class="dropdown-item" href="hosting.html">Cloud Server </a>
-								<a class="dropdown-item" href="hosting.html">Reseller Package </a>
-								<a class="dropdown-item" href="hosting.html">Dedicated Hosting </a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="domain.html">Domain</a></li>
-						<li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item {{Route::is('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{ route('welcome') }}">Home</a></li>
+						@guest
+							<li class="nav-item {{Route::is('home.listOffre') ? 'active' : '' }}"><a class="nav-link " href="{{ route('home.listOffre') }}">Offres</a></li>
+							<li class="nav-item {{Route::is('home.listDemande') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.listDemande') }}">Demandes</a></li>
+							@if (Route::is('login'))
+                                <li class="nav-item {{Route::is('register') ? 'active' : '' }}">
+									<a class="nav-link " href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+							@endif
+							@if (Route::is('register'))
+                                <li class="nav-item {{Route::is('login') ? 'active' : '' }}">
+									<a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+							@if (!Route::is('register') && !Route::is('login'))
+								<li class="nav-item {{Route::is('login') ? 'active' : '' }}">
+									<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+								</li>
+								<li class="nav-item {{Route::is('register') ? 'active' : '' }}">
+									<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+								</li>
+							@endif
+						@endguest
+						
+						@auth
+
+							@if (auth()->user()->profil->name == 'offre')
+								<li class="nav-item {{Route::is('home.listDemande') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.listDemande') }}">Demandes</a></li>
+
+								<li class="nav-item {{Route::is('offre.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('offre.index') }}">mes offres</a></li>
+
+								<li class="nav-item {{Route::is('offre.create') ? 'active' : '' }}"><a class="nav-link" href="{{ route('offre.create') }}">creer une offre</a></li>
+							@endif
+
+							@if (auth()->user()->profil->name == 'demande')
+								<li class="nav-item {{Route::is('home.listOffre') ? 'active' : '' }}"><a class="nav-link " href="{{ route('home.listOffre') }}">Offres</a></li>
+
+								<li class="nav-item {{Route::is('demandes.index') ? 'active' : '' }}"><a class="nav-link" href="{{ route('demandes.index') }}">mes demande</a></li>
+
+								<li class="nav-item {{Route::is('demandes.create') ? 'active' : '' }}"><a class="nav-link" href="{{ route('demandes.create') }}">creer une demande</a></li>
+							@endif
+
+							
+						@endauth
+
+						<li class="nav-item {{Route::is('contact') ? 'active' : '' }}"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+
+						@auth
+							<li class="nav-item dropdown {{Route::is('home') ? 'active' : '' }} {{Route::is('profile.show') ? 'active' : '' }} {{Route::is('profile.index') ? 'active' : '' }}">
+								<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+									{{ Auth::user()->name }}
+								</a>
+								
+								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+									
+									<a class="dropdown-item" href="{{route('home')}}">Dashboard </a>
+									<a class="dropdown-item" href="{{route('profile.show')}}">voir profil </a>
+									<a class="dropdown-item" href="{{route('profile.index')}}">modifie profil </a>
+
+									<a class="dropdown-item" href="{{ route('logout') }}"
+									onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();">
+										{{ __('Logout') }}
+									</a>
+
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+										@csrf
+									</form>
+								</div>
+							</li>
+
+							<li class="nav-item dropdown">
+							@if (auth()->user()->unreadNotifications->count() > 0)
+								<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Notifications <span class="badge badge-pill badge-light">{{auth()->user()->unreadNotifications->count()}}</span></a>
+								<div class="dropdown-menu" aria-labelledby="dropdown-a">
+									@foreach (auth()->user()->unreadNotifications as $item)
+										@if (auth()->user()->profil->name == 'demande')
+											@if ($item->type == "App\Notifications\UserPostuleDemandeResponseNotification")
+												<a href="#" class="dropdown-item {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre demande d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
+											@else
+												<a href="{{ route('demande.showProfilePostuler', [ "user" => $item->data['user_postule_id'], "demande" => $item->data['demande_id']])}}" class="dropdown-item ">{{$item->data['user_postule_name']}} a postuler a votre demande d'emploi N°{{$item->data['demande_id']}}</a>
+											@endif
+										@endif
+										@if (auth()->user()->profil->name == 'offre')
+											@if ($item->type == "App\Notifications\UserPostuleOffreResponseNotification")
+												<a href="#" class="dropdown-item {{$item->data['status'] == 'accepter' ? 'text-primary' : 'text-danger'}}">{{$item->data['user_name']}} a  {{$item->data['status']}} votre offre d'emploi {{$item->data['status'] == 'accepter' ? 'contacter le sur ce email : '.$item->data['user_email'] : ''}}</a>
+											@else
+												<a href="{{ route('offre.showProfilePostuler', [ "user" => $item->data['user_postule_id'], "offre" => $item->data['offre_id']])}}" class="dropdown-item ">{{$item->data['user_postule_name']}} a  votre offre d'emploi N°{{$item->data['offre_id']}}</a>
+											@endif
+										@endif
+									@endforeach
+
+								</div>
+							</li>
+							@endif
+
+						@endauth
 					</ul>
-					<ul class="nav navbar-nav navbar-right">
-                        <li><a class="hover-btn-new log" href="#" data-toggle="modal" data-target="#login"><span>Customer Login</span></a></li>
-                    </ul>
+					
 				</div>
 			</div>
 		</nav>

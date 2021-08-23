@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
 <div class="container">
@@ -15,6 +15,10 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    @foreach (auth()->user()->notifications as $item)
+                        <p>{{$item}}</p>
+                    @endforeach
                     
                 </div>
             </div>

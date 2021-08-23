@@ -22,7 +22,7 @@ use App\Http\Controllers\PostulerDemandeController;
 */
 
 Route::get('/', [HomeController::class, 'pageAcceuille'])->name('welcome');
-Route::get('/home/offre', [HomeController::class, 'listOffre'])->name('homme.listOffre');
+Route::get('/home/offre', [HomeController::class, 'listOffre'])->name('home.listOffre');
 Route::get('/home/demande', [HomeController::class, 'listDemande'])->name('home.listDemande');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
@@ -33,11 +33,11 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
 
-Route::group(["middleware" => ['auth', 'offre']], function () {
+Route::group(["middleware" => ['auth', 'offre', 'verified']], function () {
     //route pour offre 
     Route::resource('offre', OffreController::class);
     Route::get('offre/{offre}/supprime', [OffreController::class, 'supprime'])->name('offre.supprime');
@@ -59,7 +59,7 @@ Route::group(["middleware" => ['auth', 'offre']], function () {
 
 });
 
-Route::group(["middleware" => ['auth', 'demande']], function () {
+Route::group(["middleware" => ['auth', 'demande', 'verified']], function () {
     //url demande
     Route::resource('/demandes', DemandeController::class);
     
@@ -80,7 +80,7 @@ Route::group(["middleware" => ['auth', 'demande']], function () {
 
 });
 
-Route::group(["middleware" => ['auth'] ], function () {
+Route::group(["middleware" => ['auth', 'verified'] ], function () {
     //route pour modifier le profile (info, password, avatar, et affiche profile)
     Route::get('profile/show', [ModifieProfileController::class, 'show'])->name('profile.show');
     Route::get('profile/edit', [ModifieProfileController::class,'index'])->name('profile.index');
