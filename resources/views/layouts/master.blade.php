@@ -14,6 +14,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+	{{-- tailwindcss --}}
+	<link rel="stylesheet" href="{{asset('css/app.css')}}">
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{{asset('style/images/favicon.ico')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{asset('style/images/apple-touch-icon.png')}}">
@@ -52,7 +55,7 @@
 	
 	<!-- Start header -->
 	<header class="top-navbar">
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-info">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">
 					<img src="{{asset('style/images/logo-hosting.png')}}" alt="" />
@@ -137,7 +140,7 @@
 							
 						@endauth
 
-						<li class="nav-item {{Route::is('contact') ? 'active' : '' }}"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+						<li class="nav-item {{Route::is('home.contact') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.contact') }}">Contact</a></li>
 
 						@auth
 							<li class="nav-item dropdown {{Route::is('home') ? 'active' : '' }} {{Route::is('profile.show') ? 'active' : '' }} {{Route::is('profile.index') ? 'active' : '' }}">
@@ -181,7 +184,7 @@
 
 
 
-    <footer class="footer">
+    <footer class="footer bg-info text-white">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-12">
@@ -200,12 +203,12 @@
                             <h3>Information Link</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Pricing</a></li>
-							<li><a href="#">About</a></li>
-							<li><a href="#">Faq</a></li>
-							<li><a href="#">Contact</a></li>
+                            <li><a class="text-white" href="#">Home</a></li>
+                            <li><a class="text-white" href="#">Blog</a></li>
+                            <li><a class="text-white" href="#">Pricing</a></li>
+							<li><a class="text-white" href="#">About</a></li>
+							<li><a class="text-white" href="#">Faq</a></li>
+							<li><a class="text-white" href="#">Contact</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -217,8 +220,8 @@
                         </div>
 
                         <ul class="footer-links">
-                            <li><a href="mailto:#">info@yoursite.com</a></li>
-                            <li><a href="#">www.yoursite.com</a></li>
+                            <li><a class="text-white" href="mailto:#">info@yoursite.com</a></li>
+                            <li><a class="text-white" href="#">www.yoursite.com</a></li>
                             <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
                             <li>+61 3 8376 6284</li>
                         </ul><!-- end links -->
@@ -229,11 +232,11 @@
         </div><!-- end container -->
     </footer><!-- end footer -->
 
-    <div class="copyrights">
+    <div class="copyrights bg-info">
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-left">                   
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2018 <a href="#">QuickCloud</a> Design By : <a href="https://html.design/">html design</a></p>
+                    <p class="footer-company-name text-white">All Rights Reserved. &copy; 2018 <a href="#">QuickCloud</a> Design By : <a href="https://html.design/">html design</a></p>
                 </div>
 
                 <div class="footer-right">

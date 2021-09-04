@@ -35,12 +35,12 @@ class HomeController extends Controller
     }
 
     public function listOffre(){
-        $offres = Offre::all();
+        $offres = Offre::orderBy('id', 'desc')->paginate(20);
         return view('home.listOffre', ["offres" => $offres]);
     }
 
     public function listDemande(){
-        $demandes = Demande::all();
+        $demandes = Demande::orderBy('id', 'desc')->paginate(20);
         return view('home.listDemande', ["demandes" => $demandes]);
     }
 

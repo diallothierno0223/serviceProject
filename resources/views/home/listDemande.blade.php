@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             @foreach ($demandes as $demande)
                 <div class="card m-3" style="width: 15rem;">
-                    <img class="card-img-top" src="{{asset("style/images/img-02.jpg")}}" alt="Card image cap">
+                    <img class="card-img-top" src="{{asset('storage/'.$demande->user->avatar)}}" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">{{$demande->job->libelle}}</h5>
                         <p class="card-text">{{substr($demande->motivation, 0, 100)."..."}}</p>
@@ -14,8 +14,8 @@
                 </div>
             @endforeach
         </div><br>
-        <div class="row justify-content-center">
-            {{-- {{$demandes->links()}} --}}
+        <div class="row mb-3 justify-content-center">
+            {{$demandes->links()}}
         </div>
     </div>
 @endsection
