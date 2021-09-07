@@ -137,7 +137,7 @@
 							
 						@endauth
 
-						<li class="nav-item {{Route::is('contact') ? 'active' : '' }}"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
+						<li class="nav-item {{Route::is('home.contact') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.contact') }}">Contact</a></li>
 
 						@auth
 							<li class="nav-item dropdown {{Route::is('home') ? 'active' : '' }} {{Route::is('profile.show') ? 'active' : '' }} {{Route::is('profile.index') ? 'active' : '' }}">
