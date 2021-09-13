@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Offre;
 use App\Models\Demande;
+use App\Models\Postuler_demande;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth'])->except(['pageAcceuille', 'listOffre', 'listDemande', 'contact']);
+        $this->middleware(['auth'])->except(['pageAcceuille', 'listOffre', 'listDemande', 'contact','searchOffre', 'searchDemande']);
     }
 
     /**
@@ -27,7 +28,24 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $nbr_postuler = 0;
+        if (auth()->user()->profil->name == 'offre'){
+            foreach (auth()->user()->offres as $offre){
+                foreach ($offre->user_postuler as $user_postuler){
+                    $nbr_postuler += 1;
+                }
+            }
+        }
+
+        if (auth()->user()->profil->name == 'demande'){
+            foreach (auth()->user()->demandes as $demande){
+                foreach ($demande->user_postuler as $user_postuler){
+                    $nbr_postuler += 1;
+                }
+            }
+        }
+
+        return view('home', ['nbr_postuler' => $nbr_postuler]);
     }
 
     public function pageAcceuille(){
@@ -71,5 +89,21 @@ class HomeController extends Controller
             }
         }
 
+    }
+
+    public function searchOffre(){
+        $q = request()->validate([
+            'search' => 'min:1'
+        ]);
+        $offres = Offre::where('description', 'like', '%'.$q['search'].'%')->orderBy('id', 'desc')->paginate(20);
+        return view('home.listOffre', ["offres" => $offres])->with('search', $offres->count()." resultat trouver ");
+    }
+
+    public function searchDemande(){
+        $q = request()->validate([
+            'search' => 'min:1'
+        ]);
+        $demandes = Demande::where('motivation', 'like', '%'.$q['search'].'%')->orWhere('experience', 'like', '%'.$q['search'].'%')->orderBy('id', 'desc')->paginate(20);
+        return view('home.listDemande', ["demandes" => $demandes]);
     }
 }

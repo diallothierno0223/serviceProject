@@ -49,12 +49,12 @@
                     <td>{{ substr($demande->experience, 0, 60)."..." }}</td>
                     <td>{{ substr($demande->motivation, 0, 60)."..." }}</td>
                     <td>
-                        <form action="{{ route('demandes.destroy',$demande->id) }}" class="form-row" method="POST">
+                        <form action="{{ route('demandes.destroy',$demande->id) }}" class="form-inline mt-2 mt-md-0" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a class="btn btn-info col btn-sm m-1" href="{{ route('demandes.show',$demande->id) }}">Show</a>
-                            <a class="btn btn-primary col btn-sm m-1" href="{{ route('demandes.edit',$demande->id) }}">Edit</a>
-                            <button type="submit" class="btn btn-danger col btn-sm m-1">Delete</button>
+                            <a class="btn btn-info btn-sm m-1" href="{{ route('demandes.show',$demande->id) }}"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-primary btn-sm m-1" href="{{ route('demandes.edit',$demande->id) }}"><i class="fa fa-edit"></i></a>
+                            <button type="submit" class="btn btn-danger btn-sm m-1"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

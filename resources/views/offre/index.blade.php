@@ -32,9 +32,11 @@
             <td>{{$offre->heure_de_travail_par_jours}}</td>
             <td>{{$offre->status}}</td>
             <td>
-                <a class="btn btn-primary m-1 btn-sm col" href="{{route('offre.show', ['offre' => $offre->id ])}}">voir</a>
-                <a href="{{route('offre.edit', ['offre' => $offre->id])}}" class="btn btn-info m-1 btn-sm col">Modifier</a>
-                <a href="{{route('offre.supprime', ['offre' => $offre->id])}}" class="btn btn-danger m-1 btn-sm col">Supprimer</a>
+                <form action="" class="form-inline mt-2 mt-md-0">
+                    <a class="btn btn-primary m-1 btn-sm" href="{{route('offre.show', ['offre' => $offre->id ])}}"><i class="fa fa-eye"></i></i></a>
+                    <a href="{{route('offre.edit', ['offre' => $offre->id])}}" class="btn btn-info m-1 btn-sm "><i class="fa fa-edit"></i></a>
+                    <a href="{{route('offre.supprime', ['offre' => $offre->id])}}" class="btn btn-danger m-1 btn-sm "><i class="fa fa-trash"></i></a>
+                </form>
             </td>
         </tr>
         @endforeach
