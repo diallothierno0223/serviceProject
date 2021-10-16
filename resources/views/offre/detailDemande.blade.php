@@ -19,89 +19,76 @@
         </div>
     </div>
     
-    <div class="row justify-content-between mb-3">
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Job</div>
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card m-2">
+                <div class="card-header bg-info">Details</div>
                 <div class="card-body">
-                    {{ $demande->job->libelle }}
+
+                    <div class="row justify-content-between mb-3">
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                            <div class="font-weight-bold text-center"><u>Job</u></div>
+                            <div class="text-center">
+                                {{ $demande->job->libelle }}
+                            </div>
+                        </div>
+                
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                            <div class="font-weight-bold text-center"><u>Salaire</u></div>
+                            <div class="text-center">{{ $demande->salaire }}</div>
+                        </div>
+                        
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                            <div class="font-weight-bold text-center"><u>Lieu cible</u></div>
+                            <div class="text-center">{{ $demande->lieu_cible }}</div>
+                        </div>
+                
+                    </div>
+
+                    <div class="row justify-content-between mb-3">
+
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Langue</u></div>
+                                <div class="text-center">{{ $demande->langue }}</div>
+                        </div>
+                
+                        <div class="col-xs-2 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Type de Salaire</u></div>
+                                <div class="text-center">{{ $demande->type_salaire }}</div>
+                        </div>
+                        
+                        <div class="col-xs-2 col-sm-12 col-md-2 m-2">
+                            <div class="font-weight-bold text-center"><u>Sexe</u></div>
+                            <div class="text-center">{{ $demande->sexe }}</div>
+                        </div>
+                       
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                            <div class="font-weight-bold text-center"><u>Heure de travail par jours</u></div>
+                            <div class="text-center">{{ $demande->heure_de_travail_par_jours }}</div>
+                        </div>
+                
+                        
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
+                            <div class="font-weight-bold text-center"><u>experience</u></div>
+                            <div class="text-center">{{ $demande->experience }}</div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
+                            <div class="font-weight-bold text-center">Motivation</div>
+                            <div class="text-center">{{ $demande->motivation }}</div>
+                        </div>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Salaire</div>
-                <div class="card-body">{{ $demande->salaire }}</div>
-            </div>
-        </div>
-        
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">lieu cible:</div>
-                <div class="card-body">{{ $demande->lieu_cible }}</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row justify-content-between mb-3">
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Langue</div>
-                <div class="card-body">
-                    {{ $demande->langue }}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-2 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header  bg-info text-white">Type de Salaire</div>
-                <div class="card-body">{{ $demande->type_salaire }}</div>
-            </div>
-        </div>
-        
-        <div class="col-xs-2 col-sm-12 col-md-2 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Sexe</div>
-                <div class="card-body">
-                    {{ $demande->sexe }}
-                </div>
-            </div>
-        </div>
-       
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white text-sm">Heure de travail par jours</div>
-                <div class="card-body">
-                    {{ $demande->heure_de_travail_par_jours }}
-                </div>
-            </div>
-        </div>
-
-        
-    </div>
-        
-        
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">experience</div>
-                <div class="card-body">{{ $demande->experience }}</div>
             </div>
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Motivation</div>
-                <div class="card-body">{{ $demande->motivation }}</div>
-            </div>
-        </div>
-    </div>
-    
     <hr>
 
     <div class="row m-3">

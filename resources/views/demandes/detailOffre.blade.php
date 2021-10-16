@@ -8,81 +8,71 @@
             {{Session::get("success")}}
         </div>
     @endif
+
+    <div class="row justify-content-center">
+        <div class="col-md-10 m-2">
+            <div class="card">
+                <div class="card-header bg-info">Détails</div>
+                <div class="card-body">
     
-    <div class="row justify-content-between mb-3">
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Job</div>
-                <div class="card-body">
-                    {{ $offre->job->libelle }}
+                    <div class="row justify-content-between mb-3">
+    
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Job</u></div>
+                                <div class="text-center">{{ $offre->job->libelle }}</div>
+                        </div>
+                
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Salaire</u></div>
+                                <div class="text-center">{{ $offre->salaire }}</div>
+                        </div>
+                        
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>lieu cible:</u></div>
+                                <div class="text-center">{{ $offre->lieu_cible }}</div>
+                        </div>
+                
+                    </div>
+
+                    <div class="row justify-content-between mb-3">
+
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Langue</u></div>
+                                <div class="text-center">{{ $offre->langue }}</div>
+                        </div>
+                
+                        <div class="col-xs-2 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center"><u>Type de Salaire</u></div>
+                                <div class="text-center">{{ $offre->type_salaire }}</div>
+                        </div>
+                        
+                        <div class="col-xs-2 col-sm-12 col-md-2 m-2">
+                                <div class="font-weight-bold text-center"><u>Sexe</u></div>
+                                <div class="text-center">{{ $offre->sexe }}</div>
+                        </div>
+                       
+                        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
+                                <div class="font-weight-bold text-center text-sm"><u>Heure de travail par jours</u></div>
+                                <div class="text-center">{{ $offre->heure_de_travail_par_jours }}</div>
+                        </div>
+                
+                        
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
+                                <div class="font-weight-bold text-center"><u>description</u></div>
+                                <div class="text-center">{{ $offre->description }}</div>
+                        </div>
+
+                    </div>
+    
                 </div>
-            </div>
-        </div>
-
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Salaire</div>
-                <div class="card-body">{{ $offre->salaire }}</div>
-            </div>
-        </div>
-        
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">lieu cible:</div>
-                <div class="card-body">{{ $offre->lieu_cible }}</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row justify-content-between mb-3">
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Langue</div>
-                <div class="card-body">
-                    {{ $offre->langue }}
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-2 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header  bg-info text-white">Type de Salaire</div>
-                <div class="card-body">{{ $offre->type_salaire }}</div>
-            </div>
-        </div>
-        
-        <div class="col-xs-2 col-sm-12 col-md-2 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">Sexe</div>
-                <div class="card-body">
-                    {{ $offre->sexe }}
-                </div>
-            </div>
-        </div>
-       
-        <div class="col-xs-3 col-sm-12 col-md-3 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white text-sm">Heure de travail par jours</div>
-                <div class="card-body">
-                    {{ $offre->heure_de_travail_par_jours }}
-                </div>
-            </div>
-        </div>
-
-        
-    </div>
-        
-        
-    <div class="row mb-3">
-        <div class="col-xs-12 col-sm-12 col-md-12 m-2">
-            <div class="card text-center">
-                <div class="card-header bg-info text-white">description</div>
-                <div class="card-body">{{ $offre->description }}</div>
             </div>
         </div>
     </div>
-
+    
     <div class="row m-1">
         @if ($affiche)
             <form method="post" action="{{route("demandes.PostulerOffre", [ "offre" => $offre->id])}}">
