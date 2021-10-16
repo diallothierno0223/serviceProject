@@ -104,7 +104,7 @@
     
     <hr>
 
-    <div class="row">
+    <div class="row m-3">
         <div class="col-md-12">
             @if ($affiche)
                 <form method="post" action="{{route("offre.PostulerDemande", [ "demande" => $demande->id])}}">
@@ -119,13 +119,13 @@
                 </form>
             @endif
         </div>
-        <div class="col-md-12">
+        {{-- <div class="col-md-12">
             <ul>
                 @foreach ($demande->user_postuler as $postuler)
                     <li>{{$postuler->name}} a postuler a cette demande <u><a href="{{ route("demande.showProfilePostuler", ["user" => $postuler->pivot->user_id, "demande" => $postuler->pivot->demande_id])}}">cliquée ici pour voir le profile</a></u></>
                 @endforeach
             </ul>
-        </div>
+        </div> --}}
     </div>
 </div>
 

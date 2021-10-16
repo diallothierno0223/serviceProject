@@ -24,9 +24,12 @@ use App\Http\Controllers\ContactController;
 
 Route::get('/', [HomeController::class, 'pageAcceuille'])->name('welcome');
 Route::get('/home/offre', [HomeController::class, 'listOffre'])->name('home.listOffre');
+Route::get('/home/offre/search', [HomeController::class, 'searchOffre'])->name('home.searchOffre');
+Route::get('/home/demandes/search', [HomeController::class, 'searchDemande'])->name('home.searchDemande');
 Route::get('/home/demande', [HomeController::class, 'listDemande'])->name('home.listDemande');
 
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
 Route::get('/readNotification/{id}/{user}', [HomeController::class, 'readNotification'])->name('readNotification');
 Route::get('/readNotificationPost/{id}/{user}', [HomeController::class, 'readNotificationPost'])->name('readNotificationPost');
 
