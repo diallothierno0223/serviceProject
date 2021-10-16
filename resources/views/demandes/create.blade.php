@@ -1,143 +1,165 @@
 @extends('layouts.master')
 
 @section('content')
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
 
-<div class="card uper">
-  <div class="card-header">
-    Faire une demande
-  </div>
+<div class="container">
+  <div class="row justify-content-center">
 
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br />
-    @endif
-
-      <form method="post" action="{{ route('demandes.store') }}">
-        @csrf
-
-
-        <div class="form-group">
-            <label for="job_id" class="col-md-4 col-form-label text-md-right">Type de profile</label>
-
-            <div class="col-md-6">
-
-                <div class="input-group mb-3 " name="job_id">
-                    <div class="input-group-prepend">
-                      <label class="input-group-text" for="inputGroupSelect01">type</label>
-                    </div>
-                    <select class="custom-select" name="job_id" id="job_id">
-                      <option >Choose...</option>
-                      @foreach ($jobs as $job)
-                        <option value="{{$job->id}}">{{$job->libelle}}</option>
-                      @endforeach
-                      
-                    </select>
-                </div>
-
-            </div>
+    <div class="col-md-10 m-3">
+      <div class="card shadow-lg rounded text-white">
+        <div class="card-header bg-primary">
+          Faire une demande
         </div>
+      
+        <div class="card-body bg-info">
+      
+            <form method="post" action="{{ route('demandes.store') }}">
+              @csrf
+              <div class="form-group row">
+                  <label for="job_id" class="col-md-4 col-form-label text-md-right">job</label>
+      
+                  <div class="col-md-6">
+      
+                      <div class="input-group mb-3 " name="job_id">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">type</label>
+                          </div>
+                          <select class="custom-select" name="job_id" id="job_id">
+                            <option >Choose...</option>
+                            @foreach ($jobs as $job)
+                              <option value="{{$job->id}}">{{$job->libelle}}</option>
+                            @endforeach
+                            
+                          </select>
+                      </div>
+      
+                  </div>
+              </div>
+      
+      
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="lieu_cible">lieu ciblé:</label>
+                    <input type="text" class=" col-md-6 form-control" name="lieu_cible" class="form-control @error('lieu_cible') is-invalid @enderror" value="{{ old('lieu_cible') }}" required autocomplete="lieu_cible" />
+                    @error('lieu_cible')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+      
+      
+                <div class="form-group row">
+                  <label for="sexe" class="col-md-4 col-form-label text-md-right">{{ __('sexe') }}</label>
+      
+                  <div class="col-md-6">
+                      <div class="form-check form-check-inline col-md-5">
+                          <input class="form-check-input" type="radio" name="sexe" id="homme" value="homme">
+                          <label class="form-check-label" for="homme">Homme</label>
+                      </div>
+                      <div class="form-check form-check-inline col-md-5">
+                          <input class="form-check-input" type="radio" name="sexe" id="femme" value="femme">
+                          <label class="form-check-label" for="femme">Femme</label>
+                      </div>
+      
+                      @error('sexe')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+      
+                </div>
+      
+                
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="salaire">salaire:</label>
+                    <input type="text" class="col-md-6 form-control" name="salaire" class="form-control @error('salaire') is-invalid @enderror" value="{{ old('salaire') }}" required autocomplete="salaire"/>
+                    @error('salaire')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+      
+                <div class="form-group row">
+                  <label for="type_salaire" class="col-md-4 col-form-label text-md-right">Type de salaire</label>
+      
+                  <div class="col-md-6">
+      
+                      <div class="input-group mb-3 " name="type_salaire">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">type</label>
+                          </div>
+                          <select class="custom-select" data-toggle="tooltip" data-placement="top" title="selectionnee votre type de salaire" name="type_salaire" id="type_salaire">
+                            <option selected>Choose...</option>
+                            <option value="heure">par heure</option>
+                            <option value="jours">journalier</option>
+                            <option value="mois">mensuelle</option>
+                          </select>
+                      </div>
+      
+                      @error('type_salaire')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                  </div>
+                </div>
+      
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="heure_de_travail_par_jours">heure de travail par jours:</label>
+                    <input type="text" name="heure_de_travail_par_jours" class="col-md-6 form-control @error('heure_de_travail_par_jours') is-invalid @enderror" value="{{ old('heure_de_travail_par_jours') }}" required autocomplete="heure_de_travail_par_jours"/>
+                    @error('heure_de_travail_par_jours')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+      
+                <div class="form-group row ">
+                    <label class="col-md-4 col-form-label text-md-right" for="langue">Langue:</label>
+                    <input type="text" name="langue" class="col-md-6 form-control @error('langue') is-invalid @enderror" value="{{ old('langue') }}" required autocomplete="langue"/>
+                    @error('langue')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+      
+                
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="experience">experience:</label>
+                    <textarea class="col-md-6 form-control @error('experience') is-invalid @enderror" id="experience" rows="5" name="experience"></textarea>
+                    @error('experience')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                    @enderror
+                </div>
+      
+                <div class="form-group row">
+                    <label class="col-md-4 col-form-label text-md-right" for="motivation">motivation:</label>
+                    <textarea class="col-md-6 form-control @error('motivation') is-invalid @enderror" id="motivation" rows="5" name="motivation"></textarea>
+                    @error('motivation')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                </div>
+                <div class="row form-group">
+                  <div class="col-md-4"></div>
+                  <div class="col-md-6 ">
+                    <div class="row justify-content-between">
+                      <button type="submit" class="btn btn-primary">Ajouter</button>
+                      <button class="btn btn-warning" type="reset">effacer tout le formulaire</button>
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
 
-
-          <div class="form-group">
-              <label for="lieu_cible">lieu ciblé:</label>
-              <input type="text" class="form-control" name="lieu_cible" class="form-control @error('lieu_cible') is-invalid @enderror" value="{{ old('lieu_cible') }}" required autocomplete="lieu_cible" />
-              @error('lieu_cible')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-          </div>
-
-
-          <div class="form-group">
-          <label for="sexe">sexe</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="sexe" id="flexRadioDefault1" value="homme">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  homme
-                </label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="sexe" id="flexRadioDefault2" value="femme">
-                <label class="form-check-label" for="flexRadioDefault2">
-                  femme
-                </label>
-            </div>
-
-            </div>
-
-
-          <div class="form-group">
-              <label for="salaire">salaire:</label>
-              <input type="text" class="form-control" name="salaire" class="form-control @error('salaire') is-invalid @enderror" value="{{ old('salaire') }}" required autocomplete="salaire"/>
-              @error('salaire')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-          </div>
-
-          <select class=form-control name="type_salaire" >
-              <option>Choose...</option>
-              <option value="journalier">journalier</option>
-              <option value="Mois">Mois</option>
-          </select>
-
-          <div class="form-group">
-              <label for="heure_de_travail_par_jours">heure de travail par jours:</label>
-              <input type="heure_de_travail_par_jours" class="form-control" name="heure_de_travail_par_jours" class="form-control @error('heure_de_travail_par_jours') is-invalid @enderror" value="{{ old('heure_de_travail_par_jours') }}" required autocomplete="heure_de_travail_par_jours"/>
-              @error('heure_de_travail_par_jours')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-          </div>
-
-          <div class="form-group">
-              <label for="langue">Langue:</label>
-              <input type="text" class="form-control" name="langue" class="form-control @error('langue') is-invalid @enderror" value="{{ old('langue') }}" required autocomplete="langue"/>
-              @error('langue')
-                  <span class="invalid-feedback" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </span>
-              @enderror
-          </div>
-
-          
-          <div class="form-group">
-              <label for="experience">experience:</label>
-              <textarea class="form-control" id="experience" rows="3" name="experience"></textarea>
-              @error('experience')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-              @enderror
-          </div>
-
-          <div class="form-group">
-              <label for="motivation">motivation:</label>
-              <textarea class="form-control" id="motivation" rows="3" name="motivation"></textarea>
-              @error('motivation')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-          </div>
-
-          <button type="submit" class="btn btn-primary">Ajouter</button>
-      </form>
   </div>
 </div>
 @endsection

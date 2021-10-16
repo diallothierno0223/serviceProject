@@ -25,10 +25,14 @@ use App\Http\Controllers\ContactController;
 Route::get('/', [HomeController::class, 'pageAcceuille'])->name('welcome');
 Route::get('/home/offre', [HomeController::class, 'listOffre'])->name('home.listOffre');
 Route::get('/home/demande', [HomeController::class, 'listDemande'])->name('home.listDemande');
-Route::get('/contact', [ContactController::class,'create'])->name('home.contact');
-Route::post('contact/envoyer', [ContactController::class,'envoyer'])->name('contact.envoyer');
+
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/readNotification/{id}/{user}', [HomeController::class, 'readNotification'])->name('readNotification');
 Route::get('/readNotificationPost/{id}/{user}', [HomeController::class, 'readNotificationPost'])->name('readNotificationPost');
+
+//Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/contact', [ContactController::class,'create'])->name('home.contact');
+Route::post('contact/envoyer', [ContactController::class,'envoyer'])->name('contact.envoyer');
 
 
 
