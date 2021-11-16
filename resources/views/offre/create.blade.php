@@ -35,7 +35,7 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="langue"> langue</label>
+                        <label for="langue"> langue parler par le prestataire</label>
                         <input type="text" name="langue" id="langue" value="{{old("langue")}}" class="form-control @error("langue") is-invalid @enderror">
                         @error("langue")
                             <div class="invalid-feedback">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="description">description</label>
+                        <label for="description">description de l'offre et du profil rechercher</label>
                         <textarea class="form-control @error("description") is-invalid @enderror" id="description" name="description">{{old("description")}}</textarea>
                         @error("description")
                             <div class="invalid-feedback">

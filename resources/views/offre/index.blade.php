@@ -3,10 +3,10 @@
 
 @section("content")
 <div class="container">
-    <a href="{{route('offre.create')}}" class="btn btn-primary m-3">creer un article</a><br>
+    <a href="{{route('offre.create')}}" class="btn btn-primary m-3">creer une offre</a><br>
 <table class="table table-striped">
     <thead>
-        <th scope="col">id</th>
+        {{-- <th scope="col">id</th> --}}
         <th scope="col">job</th>
         <th scope="col">lieu cible</th>
         <th scope="col">langue</th>
@@ -21,7 +21,7 @@
     <tbody>
         @foreach ($offres as $offre)
         <tr>
-            <th scope="col">{{$offre->id}}</th>
+            {{-- <th scope="col">{{$offre->id}}</th> --}}
             <td>{{$offre->job->libelle}}</td>
             <td>{{$offre->lieu_cible}}</td>
             <td>{{$offre->langue}}</td>

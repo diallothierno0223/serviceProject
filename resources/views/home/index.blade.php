@@ -23,10 +23,8 @@
 
             <h2 class="section-title mb-3">Aide aux mises en relations dans le domaine du service domestique</h2>
                 <p class="lead">Particulier et prestataire</p>
-                <p style="text-align:justify">Le lorem ipsum est, en imprimerie, une suite de mots sans 
-                signification utilisée à titre provisoire pour calibrer une mise en page, le teLe lorem ipsum est, en imprimerie, une suite de mots sans signification utilisée à titre provisoire pour calibrer une mise en page, le texte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
-                xte définitif venant remplacer le faux-texte dès qu'il est prêt ou que la mise en page est achevée. Généralement, on utilise un texte en faux latin, le Lorem ipsum ou Lipsum.
-            </p>
+                <p style="text-align:justify">Aide à domicile, employé de maison ou de ménage, ... Il procède à l'entretien ménager du domicile d'un ou plusieurs particuliers, selon les instructions de la personne ou de la structure employeuse. Il peut effectuer des travaux de grand nettoyage occasionnels ou des activités de services et d'accompagnement auprès de publics (enfants, personnes âgées, ...), peut coordonner
+                   l'activité du personnel de maison. Il exerce au domicile d'un ou plusieurs particuliers.</p>
 
 
 
@@ -47,8 +45,8 @@
             <div class="pr-5 first-step">
               <span class="text-black">01.</span>
               <span class="custom-icon flaticon-house text-black"></span>
-              <h3 class="text-black">lorem ipsum est, en im.</h3>
-              <p class="text-black">lorem ipsum est, en im lorem ipsum est, en imlorem ipsum est, en imlorem ipsum est, en im.</p>
+              <h3 class="text-black">créer un compte en fonction du profil demandé</h3>
+              {{-- <p class="text-black">lorem ipsum est, en im lorem ipsum est, en imlorem ipsum est, en imlorem ipsum est, en im.</p> --}}
             </div>
           </div>
 
@@ -56,8 +54,8 @@
             <div class="pr-5 second-step">
               <span class="text-black">02.</span>
               <span class="custom-icon flaticon-coin text-black"></span>
-              <h3 class="text-dark">lorem ipsum est, en im.</h3>
-              <p class="text-black">lorem ipsum est, en im lorem ipsum est, en imlorem ipsum est, en im lorem ipsum est, en im</p>
+              <h3 class="text-dark">créer des offres ou faire des demandes de prestations de services</h3>
+              {{-- <p class="text-black">lorem ipsum est, en im lorem ipsum est, en imlorem ipsum est, en im lorem ipsum est, en im</p> --}}
             </div>
           </div>
 
@@ -65,8 +63,8 @@
             <div class="pr-5">
               <span class="text-black">03.</span>
               <span class="custom-icon flaticon-home text-black"></span>
-              <h3 class="text-dark">lorem ipsum est, en im</h3>
-              <p class="text-black">lorem ipsum est, en im hlorem ipsum est, en imlorem ipsum est, en imlorem ipsum est, en im .</p>
+              <h3 class="text-dark">postuler à une demande ou offre et recevoir des notification par mail et sms</h3>
+              {{-- <p class="text-black">lorem ipsum est, en im hlorem ipsum est, en imlorem ipsum est, en imlorem ipsum est, en im .</p> --}}
             </div>
           </div>
         </div>

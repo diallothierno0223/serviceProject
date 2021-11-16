@@ -11,7 +11,7 @@
     <div class="row m-2">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show Demande</h2>
+                <h2> affiche Demande</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('demandes.index') }}"> Back</a>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>site service</title>  
+    <title>PrestaService</title>  
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -60,7 +60,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-info">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="index.html">
-					<img src="{{asset('style/images/logo-hosting.png')}}" alt="" />
+					<img src="{{asset('style/images/logo-hosting2.png')}}" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="icon-bar"></span>
@@ -97,26 +97,26 @@
 							@endif
 
 						@endauth
-						<li class="nav-item {{Route::is('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{ route('welcome') }}">Home</a></li>
+						<li class="nav-item {{Route::is('welcome') ? 'active' : '' }}"><a class="nav-link" href="{{ route('welcome') }}">Accueil</a></li>
 						@guest
 							<li class="nav-item {{Route::is('home.listOffre') ? 'active' : '' }}"><a class="nav-link " href="{{ route('home.listOffre') }}">Offres</a></li>
 							<li class="nav-item {{Route::is('home.listDemande') ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.listDemande') }}">Demandes</a></li>
 							@if (Route::is('login'))
                                 <li class="nav-item {{Route::is('register') ? 'active' : '' }}">
-									<a class="nav-link " href="{{ route('register') }}">{{ __('Register') }}</a>
+									<a class="nav-link " href="{{ route('register') }}">{{ __('Inscription') }}</a>
                                 </li>
 							@endif
 							@if (Route::is('register'))
                                 <li class="nav-item {{Route::is('login') ? 'active' : '' }}">
-									<a class="nav-link " href="{{ route('login') }}">{{ __('Login') }}</a>
+									<a class="nav-link " href="{{ route('login') }}">{{ __('Connexion') }}</a>
                                 </li>
                             @endif
 							@if (!Route::is('register') && !Route::is('login'))
 								<li class="nav-item {{Route::is('login') ? 'active' : '' }}">
-									<a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+									<a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
 								</li>
 								<li class="nav-item {{Route::is('register') ? 'active' : '' }}">
-									<a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+									<a class="nav-link" href="{{ route('register') }}">{{ __('Inscription') }}</a>
 								</li>
 							@endif
 						@endguest
@@ -192,23 +192,21 @@
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
-                            <h3>About US</h3>
+                            <h3>apropos de nous</h3>
                         </div>
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                        <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                        <p>Aide à domicile, employé de maison ou de ménage, ... Il procède à l'entretien ménager du domicile d'un ou plusieurs particuliers, selon les instructions de la personne ou de la structure employeuse. Il peut effectuer des travaux de grand nettoyage occasionnels ou des activités de services et d'accompagnement auprès de publics (enfants, personnes âgées, ...), peut coordonner l'activité du personnel de maison. Il exerce au domicile d'un ou plusieurs particuliers.</p>
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
 
 				<div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
-                            <h3>Information Link</h3>
+                            <h3>Lien d'information</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a class="text-white" href="#">Home</a></li>
+                            <li><a class="text-white" href="#">accueil</a></li>
                             <li><a class="text-white" href="#">Blog</a></li>
-                            <li><a class="text-white" href="#">Pricing</a></li>
-							<li><a class="text-white" href="#">About</a></li>
+							<li><a class="text-white" href="#">apropos</a></li>
 							<li><a class="text-white" href="#">Faq</a></li>
 							<li><a class="text-white" href="#">Contact</a></li>
                         </ul><!-- end links -->
@@ -218,14 +216,14 @@
                 <div class="col-lg-4 col-md-4 col-xs-12">
                     <div class="widget clearfix">
                         <div class="widget-title">
-                            <h3>Contact Details</h3>
+                            <h3>Details Contact </h3>
                         </div>
 
                         <ul class="footer-links">
-                            <li><a class="text-white" href="mailto:#">info@yoursite.com</a></li>
-                            <li><a class="text-white" href="#">www.yoursite.com</a></li>
-                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                            <li>+61 3 8376 6284</li>
+                            <li><a class="text-white" href="mailto:#">mamadoucelloudiallo24@gmail.com</a></li>
+                            <li><a class="text-white" href="#">www.prestaservice.com</a></li>
+                            <li>Senegal / Dakar</li>
+                            <li>00221784716097</li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
@@ -238,7 +236,7 @@
         <div class="container">
             <div class="footer-distributed">
                 <div class="footer-left">                   
-                    <p class="footer-company-name text-white">All Rights Reserved. &copy; 2018 <a href="#">QuickCloud</a> Design By : <a href="https://html.design/">html design</a></p>
+                    <p class="footer-company-name text-white">tous les droits sont réservés &copy; 2021 <a href="#">PrestaService</a> créé par : <a href="#"> diallo mamadou cellou</a></p>
                 </div>
 
                 <div class="footer-right">

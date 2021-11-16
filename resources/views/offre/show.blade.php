@@ -6,7 +6,7 @@
     <div class="row m-2">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show offre</h2>
+                <h2> affiche offre</h2>
             </div>
         </div>
     </div>
