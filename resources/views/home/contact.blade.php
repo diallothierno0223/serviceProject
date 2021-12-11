@@ -27,7 +27,7 @@
                             @csrf
                             <fieldset class="row row-fluid">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="first_name" id="first_name" value="{{old('first_name') ?? ''}}" class="form-control mb-3 @error('first_name') is-invalid @enderror " placeholder="First Name">
+                                    <input type="text" name="first_name" id="first_name" value="{{old('first_name') ?? ''}}" class="form-control mb-3 @error('first_name') is-invalid @enderror " placeholder="Nom">
                                         @error('first_name')
                                             <div class="invalid-feedback">
                                             <h6 class="text-danger">{{$errors->first('first_name')}}</h6>
@@ -35,7 +35,7 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="last_name" id="last_name" value="{{old('last_name') ?? ''}}" class="form-control mb-3 @error('last_name') is-invalid @enderror "  placeholder="Last Name">
+                                    <input type="text" name="last_name" id="last_name" value="{{old('last_name') ?? ''}}" class="form-control mb-3 @error('last_name') is-invalid @enderror "  placeholder="Prénom">
                                          @error('last_name')
                                             <div class="invalid-feedback">
                                             <h6 class="text-danger">{{$errors->first('last_name')}}</h6>
@@ -43,7 +43,7 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="email" name="email" id="email" value="{{old('email') ?? ''}}" class="form-control mb-3 @error('email') is-invalid @enderror " placeholder="Your Email">
+                                    <input type="email" name="email" id="email" value="{{old('email') ?? ''}}" class="form-control mb-3 @error('email') is-invalid @enderror " placeholder="votre email">
                                         @error('email')
                                             <div class="invalid-feedback">
                                             <h6 class="text-danger">{{$errors->first('email')}}</h6>
@@ -51,7 +51,7 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" name="phone" id="phone" value="{{old('phone') ?? ''}}" class="form-control mb-3 @error('phone') is-invalid @enderror " placeholder="Your Phone">
+                                    <input type="text" name="phone" id="phone" value="{{old('phone') ?? ''}}" class="form-control mb-3 @error('phone') is-invalid @enderror " placeholder="votre numero de téléphone">
                                          @error('phone')
                                             <div class="invalid-feedback">
                                             <h6 class="text-danger">{{$errors->first('phone')}}</h6>
@@ -59,7 +59,7 @@
                                         @enderror
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <textarea value="{{old('comments') ?? ''}}" class="form-control mb-3 @error('comments') is-invalid @enderror " name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
+                                    <textarea value="{{old('comments') ?? ''}}" class="form-control mb-3 @error('comments') is-invalid @enderror " name="comments" id="comments" rows="6" placeholder="votre message..."></textarea>
                                         @error('comments')
                                             <div class="invalid-feedback">
                                             <h6 class="text-danger">{{$errors->first('comments')}}</h6>

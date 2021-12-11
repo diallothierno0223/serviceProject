@@ -64,17 +64,17 @@ class UserPostuleDemandeNotification extends Notification
      */
     public function toArray($notifiable)
     {
-        // $basic  = new Basic(getenv("NEXMO_KEY"), getenv("NEXMO_SECRET"));//\Nexmo\Client\Credentials\
-        // // dd("ok");
-        // $client = new Client($basic);
-        // $receiverNumber = "002250102236740";
-        // $message = "This is testing from ItSolutionStuff.com";
+    //     $basic  = new Basic(getenv("NEXMO_KEY"), getenv("NEXMO_SECRET"));//\Nexmo\Client\Credentials\
+    //     // dd("ok");
+    //     $client = new Client($basic);
+    //     $receiverNumber = "002250102236740";
+    //     $message = "This is testing from ItSolutionStuff.com";
 
-        // $message = $client->message()->send([$client->message()->send([
-        //     'to' => $receiverNumber,
-        //     'from' => 'Vonage APIs',
-        //     'text' => $message
-        // ])]);
+    //     $message = $client->message()->send([$client->message()->send([
+    //         'to' => $receiverNumber,
+    //         'from' => 'Vonage APIs',
+    //         'text' => $message
+    //     ])]);
         
     //     Nexmo :: message ()-> send ([
     //         'to'    => '002250102236740' ,

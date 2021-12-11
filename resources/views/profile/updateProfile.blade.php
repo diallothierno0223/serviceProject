@@ -56,6 +56,32 @@
                             </form>
                         </div>
                     </div>
+                    @if(auth()->user()->profil->name == "demande")
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <div class="mt-3">
+                                        <h3 class="row justify-content-center text-uppercase">selectionee un CV au format pdf</h3>
+                                        <form method="post" action="{{ route('profile.update.cv')}}" enctype="multipart/form-data">
+                                            @csrf
+                                            <input class="form-control-file" type="file" name="cv" accept="application/pdf" required/>
+                                            @if(auth()->user()->cv == "none")
+                                                <button type="submit" class="m-2 btn btn-primary">Ajouté</button>
+                                            @else
+                                                <button type="submit" class="m-2 btn btn-primary">modifier</button>
+                                            @endif
+                                            <ul>
+                                                @foreach($errors->all() as $error)
+                                                    <li>{{$error}}</li>
+                                                @endforeach
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-lg-8">
                     <div class="card">
@@ -182,6 +208,11 @@
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <iframe src="{{asset('storage/'.auth()->user()->cv)}}" class="col-md-12" height="275px"> </iframe>
                         </div>
                     </div>
                 </div>

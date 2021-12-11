@@ -13,7 +13,7 @@
                 <h2>Demande </h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('demandes.create') }}"> Create New demande</a>
+                <a class="btn btn-success" href="{{ route('demandes.create') }}"> Créer une nouvelle demande</a>
             </div>
         </div>
     </div>

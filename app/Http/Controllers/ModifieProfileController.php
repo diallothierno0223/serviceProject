@@ -41,6 +41,17 @@ class ModifieProfileController extends Controller
         return redirect('/home');
     }
 
+    public function cv(Request $request){
+        $data = request()->validate([
+            'cv' => "required|mimes:pdf|max:5000"
+        ]);
+
+        $path = $request->file('cv')->store('cv_users');
+        $user = User::findOrFail(auth()->user()->id);
+        $user->update(['cv' => $path]);
+        return redirect('/home');
+    }
+
     public function password(){
         $data = request()->validate([
             'password' => "required|min:8",

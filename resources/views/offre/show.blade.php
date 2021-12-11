@@ -88,7 +88,7 @@
 
     <div class="row">
         <div class="col-md-12">
-            <h1>personne qui on postuler a votre demande d'emploi</h1>
+            <h1>Les personnes qui ont postulé à cette offre d'emploi</h1>
         </div>
         <div class="col-md-12">
             <ul>

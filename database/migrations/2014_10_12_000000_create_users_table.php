@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('pays')->nullable();
             $table->string('ville')->nullable();
             $table->string('rue')->nullable();
+            $table->string('cv')->default('none')->nullable();
             $table->unsignedBigInteger('profil_id')->default(1);
             $table->foreign('profil_id')->references('id')->on('profils');
 

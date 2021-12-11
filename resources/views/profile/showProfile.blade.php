@@ -142,6 +142,17 @@
             </div>
           </div>
 
+          
+
         </div>
+        @if(auth()->user()->profil->name == "demande")
+          <div class="row ">
+            <div class="card col-md-12 mb-2">
+              <div class="card-body">
+                  <iframe src="{{asset('storage/'.auth()->user()->cv)}}" class="col-md-12 " height="500px"> </iframe>
+              </div>
+            </div>
+          </div>
+        @endif
     </div>
 @endsection

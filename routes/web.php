@@ -98,6 +98,7 @@ Route::group(["middleware" => ['auth', 'verified'] ], function () {
     Route::get('profile/edit', [ModifieProfileController::class,'index'])->name('profile.index');
     Route::post('profile/update', [ModifieProfileController::class,'update'])->name('profile.update');
     Route::post('profile/update/avatar', [ModifieProfileController::class, 'avatar'])->name('profile.update.avatar');
+    Route::post('profile/update/cv', [ModifieProfileController::class, 'cv'])->name('profile.update.cv');
     Route::post('profile/update/possword', [ModifieProfileController::class, 'password'])->name('profile.update.password');
 
 });

@@ -1,6 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
+{{-- {{dd("ok")}} --}}
     <div class="container">
         @if (Session::has("success"))
             <div class="alert alert-success">
@@ -8,7 +9,7 @@
             </div>
         @endif
         <div class="row justify-content-center">
-            <div class="col-md-6 col-xl-6 col-sm-12 m-3">
+            <div class="col-md-5 col-xl-5 col-sm-12 mb-2 m-1">
                 <div class="card shadow-xl">
                     <div class="card-header bg-info">
                         Profile
@@ -19,15 +20,15 @@
                         </div><hr>
                         <div class="row m-1">
                             <div class="col-md-6 col-sm-12">
-                                <p><strong>name : </strong> {{$user->name}}</p>
+                                <p><strong>Nom : </strong> {{$user->name}}</p>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <p><strong>lastName : </strong> {{$user->lastName}}</p>
+                                <p><strong>Prenom : </strong> {{$user->lastName}}</p>
                             </div>
                         </div>
                         <div class="row m-1">
                             <div class="col-md-7 col-sm-12">
-                                <p><strong>dateNaissance : </strong> {{$user->dateNaissance}}</p>
+                                <p><strong>Date de naissance : </strong> {{$user->dateNaissance}}</p>
                             </div>
                             <div class="col-md-5 col-sm-12">
                                 <p><strong>sexe : </strong> {{$user->sexe}}</p>
@@ -45,7 +46,7 @@
                         </div>
                         <div class="row m-1">
                             <div class="col-md-12">
-                                <p><strong>numeroPieceIdentiter : </strong> {{$user->numeroPieceIdentiter}}</p>
+                                <p><strong>numero de la piece d'identiter : </strong> {{$user->numeroPieceIdentiter}}</p>
                             </div>
                         </div>
                         <div class="row m-1">
@@ -70,6 +71,15 @@
                     </div>
                 </div>
             </div>
+            @if($user->cv != "none")
+                <div class="col-md-6 col-xl-6 col-sm-12 m-1">
+                    <div class="card">
+                        <div class="card-body">
+                            <iframe src="{{asset('storage/'.$user->cv)}}" class="col-md-12 " height="700"> </iframe>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

@@ -66,10 +66,10 @@
                                     <img src="{{asset('storage/'.auth()->user()->avatar)}}" width="75" height="75" class="rounded-circle"  alt="profile">
                                 </div>
                                 <div class="col-md-4">
-                                    <p>nombre d'offre poster : {{ auth()->user()->demandes->count() }}</p>
+                                    <p>nombre de demande poster : {{ auth()->user()->demandes->count() }}</p>
                                 </div>
                                 <div class="col-md-5">
-                                    <p>nombre de personne qui on postuler a vos offre : {{ $nbr_postuler }}</p>
+                                    <p>nombre de personne qui ont postulé a vos demande : {{ $nbr_postuler }}</p>
                                 </div>
                             </div>
                         </div>

@@ -67,8 +67,10 @@ class PostulerOffreController extends Controller
         }
         $postule = Postuler_offre::where("user_id", $user->id)->where("offre_id", $offre->id)->firstOrFail();
         if($a){
+            // dd("ok1");
             return view("offre.profilePostuler", ["user" => $user, "offre" => $offre, "postule" => $postule]);
         }else {
+            // dd("ok2");
             return abort(404);
         } 
         

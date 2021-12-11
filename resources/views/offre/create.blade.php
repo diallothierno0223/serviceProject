@@ -14,7 +14,7 @@
                     <div class="form-group">
                         <label for="job_id">job</label>
                         <select class="form-control @error("job_id") is-invalid @enderror" name="job_id" id="job_id">
-                            <option>choose....</option>
+                            <option>choisir....</option>
                             @foreach ($jobs as $job)
                                 <option value="{{$job->id}}">{{$job->libelle}}</option>
                             @endforeach
@@ -97,6 +97,7 @@
                     </div>
     
                     <div class="form-group">
+                    <label>vous allez payer 1000 fcfa pour posté cette offre</label>
                     <input type="hidden" name="payment_method" id="payment_method" />
                         <!-- Stripe Elements Placeholder -->
                         <div id="card-element"></div>
