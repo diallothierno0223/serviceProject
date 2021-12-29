@@ -40,6 +40,7 @@ class PostulerOffreController extends Controller
     //postuler a une offre fonction
     public function postuler(Offre $offre)
     {
+        // dd("ok");
         $user = User::findOrFail(auth()->user()->id);
         $offre->user_postuler()->attach($user->id);
         $user_notify = User::findOrFail($offre->user->id);

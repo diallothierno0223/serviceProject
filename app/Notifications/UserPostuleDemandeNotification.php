@@ -64,25 +64,15 @@ class UserPostuleDemandeNotification extends Notification
      */
     public function toArray($notifiable)
     {
-    //     $basic  = new Basic(getenv("NEXMO_KEY"), getenv("NEXMO_SECRET"));//\Nexmo\Client\Credentials\
-    //     // dd("ok");
-    //     $client = new Client($basic);
-    //     $receiverNumber = "002250102236740";
-    //     $message = "This is testing from ItSolutionStuff.com";
 
-    //     $message = $client->message()->send([$client->message()->send([
-    //         'to' => $receiverNumber,
-    //         'from' => 'Vonage APIs',
-    //         'text' => $message
-    //     ])]);
-        
-    //     Nexmo :: message ()-> send ([
-    //         'to'    => '002250102236740' ,
-    //         'from'  => '002250102236740' ,
-    //         'text' => 'Utiliser la façade pour envoyer un message.' 
-    //    ]);
+        $basic  = new \Vonage\Client\Credentials\Basic("4c1e9a11", "hgH3Fqfbi6scITGY");
+        $client = new \Vonage\Client($basic);
 
-    //     dd("okk");
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("2250102236740", "PrestaService", "Bonjour monsieur ".$notifiable->name.", Mr ".$this->user->name." a postuler a votre demande d'emploi.contactez le numero suivant :".$this->user->numero)
+        );
+        $message = $response->current();
+
         return [
             "user_postule_id" => $this->user->id,
             "user_postule_name" => $this->user->name,

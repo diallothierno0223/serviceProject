@@ -53,40 +53,7 @@ class HomeController extends Controller
     }
 
     public function pageAcceuille(){
-
-       //  $basic  = new Basic(getenv("NEXMO_KEY"), getenv("NEXMO_SECRET"));//\Nexmo\Client\Credentials\
-       //  $client = new Client($basic);
-       //  $receiverNumber = "002250102236740";
-       //  $message = "This is testing from ItSolutionStuff.com";
-
-       //  $message = $client->message()->send([$client->message()->send([
-       //      'to' => $receiverNumber,
-       //      'from' => 'Vonage APIs',
-       //      'text' => $message
-       //  ])]);
-        
-       //  Nexmo :: message ()-> send ([
-       //      'to'    => '002250102236740' ,
-       //      'from'  => '002250102236740' ,
-       //      'text' => 'Utiliser la façade pour envoyer un message.' 
-       // ]);
-
-        // $basic  = new \Vonage\Client\Credentials\Basic("4c1e9a11", "hgH3Fqfbi6scITGY");
-        // $client = new \Vonage\Client($basic);
-
-        // $response = $client->sms()->send(
-        //     new \Vonage\SMS\Message\SMS("2250102236740", "BRAND_NAME", 'A text message sent using the Nexmo SMS API')
-        // );
-
-        // $message = $response->current();
-
-        // if ($message->getStatus() == 0) {
-        //     echo "The message was sent successfully\n";
-        // } else {
-        //     echo "The message failed with status: ".$message->getStatus()."\n";
-        // }
-
-        dd("okk");
+        // dd("okk");
 
         return view('home.index');
 

@@ -48,6 +48,13 @@ class UserPostuleOffreResponseNotification extends Notification
     public function toMail($notifiable)
     {
         if($this->action == "accepter"){
+            $basic  = new \Vonage\Client\Credentials\Basic("4c1e9a11", "hgH3Fqfbi6scITGY");
+            $client = new \Vonage\Client($basic);
+
+            $response = $client->sms()->send(
+                new \Vonage\SMS\Message\SMS("2250102236740", "PrestaService", "Bonjour monsieur ".$this->user->name.", Mr ".$notifiable->name." a accepter votre demande derecrutement.contactez le ici:".$notifiable->numero)
+            );
+            $message = $response->current();
             return (new MailMessage)
                         ->line('Bonjour '.$notifiable->name)
                         ->line($this->user->name." a accepter votre demande d'emploi")
@@ -57,6 +64,14 @@ class UserPostuleOffreResponseNotification extends Notification
                         ->line('merci d\'utiliser notre plate forme !');
         }
         if($this->action == "refuser"){
+            $basic  = new \Vonage\Client\Credentials\Basic("4c1e9a11", "hgH3Fqfbi6scITGY");
+            $client = new \Vonage\Client($basic);
+
+            $response = $client->sms()->send(
+                new \Vonage\SMS\Message\SMS("2250102236740", "PrestaService", "Bonjour monsieur ".$this->user->name.", Mr ".$notifiable->name." a refusez votre demande de recrutement")
+            );
+            $message = $response->current();
+
             return (new MailMessage)
                         ->line('Bonjour '.$notifiable->name)
                         ->line($this->user->name." a refusez votre demande d'emploi")

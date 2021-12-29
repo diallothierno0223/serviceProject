@@ -60,6 +60,18 @@ class UserPostuleOffreNotification extends Notification
      */
     public function toArray($notifiable)
     {
+        $basic  = new \Vonage\Client\Credentials\Basic("4c1e9a11", "hgH3Fqfbi6scITGY");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("2250102236740", "PrestaService", "Bonjour monsieur ".$notifiable->name.", Mr ".$this->user->name." a postuler a votre offre d'emploi.contactez le numero suivant :".$this->user->numero)
+        );
+        $message = $response->current();
+
+        if ($message->getStatus() != 0) {
+            echo "The message failed with status: ".$message->getStatus()."\n";
+        }
+
         return [
             "user_postule_id" => $this->user->id,
             "user_postule_name" => $this->user->name,
